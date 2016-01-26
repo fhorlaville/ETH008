@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Buttons Test</title>
+</head>
+<body>
+
+<h3>Web buttons</h3>
+<input type="button" value="One 15s" onclick="activate('button1', 150);" />
+<input type="button" value="Two 15s" onclick="activate('button2', 150);" />
+<hr>
+<h3>Testing</h3>
+<input type="button" value="One - ON" onclick="activate('button1on', 1);" />
+<input type="button" value="One - OFF" onclick="activate('button1off', 1);" />
+<br>
+<input type="button" value="Two - ON" onclick="activate('button2on', 1);" />
+<input type="button" value="Two - OFF" onclick="activate('button2off', 1);" />
+<br>
+<input type="button" value="ALL OFF" onclick="snowGlobe('alloff', 1);" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/sound.js"></script>
+
+<script type="text/javascript">
+
+    function activate(params, duration) {
+
+        var request = jQuery.ajax({
+            url: '/ajax.php?'+ params + '=' + duration,
+            type: "GET",
+            dataType: "html"
+        });
+
+        playSound();
+
+//
+// provide feedback if needed
+//
+//        request.done(function(msg) {
+//            alert( "done: " + msg );
+//        });
+
+        request.fail(function(jqXHR, textStatus) {
+            alert( "Request failed: " + textStatus );
+        });
+
+    }
+</script>
+
+<script src="js/sound.js"></script>
+
+<script type="text/javascript">
+    var gPlaying=false;
+
+    var songs  = [
+        ss_soundbits('songs/song1.mp3'),
+        ss_soundbits('songs/song2.mp3'),
+        ss_soundbits('songs/song3.mp3')
+    ];
+
+    function playSound() {
+        if (!gPlaying) {
+            gPlaying=true;
+            setTimeout(resetPlaying,20000);
+            var chooseSong = getRandomInt(0, songs.length - 1);
+            songs[chooseSong].playclip();
+        } else {
+            // alert("Already Playing");
+        }
+    }
+
+    function resetPlaying(){
+        // alert("Resetting gPlaying");
+        gPlaying=false;
+    }
+
+</script>
+
+</body>
+</html>
