@@ -21,7 +21,6 @@
 <input type="button" value="ALL OFF" onclick="activate('alloff', 1);" />
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="js/sound.js"></script>
 
 <script type="text/javascript">
 
@@ -32,8 +31,6 @@
             type: "GET",
             dataType: "html"
         });
-
-        playSound();
 
 //
 // provide feedback if needed
@@ -47,35 +44,6 @@
         });
 
     }
-</script>
-
-<script src="js/sound.js"></script>
-
-<script type="text/javascript">
-    var gPlaying=false;
-
-    var songs  = [
-        ss_soundbits('songs/song1.mp3'),
-        ss_soundbits('songs/song2.mp3'),
-        ss_soundbits('songs/song3.mp3')
-    ];
-
-    function playSound() {
-        if (!gPlaying) {
-            gPlaying=true;
-            setTimeout(resetPlaying,20000);
-            var chooseSong = getRandomInt(0, songs.length - 1);
-            songs[chooseSong].playclip();
-        } else {
-            // alert("Already Playing");
-        }
-    }
-
-    function resetPlaying(){
-        // alert("Resetting gPlaying");
-        gPlaying=false;
-    }
-
 </script>
 
 </body>

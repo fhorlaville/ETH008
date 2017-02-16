@@ -39,7 +39,7 @@ function firstSet($turnOn = 0, $duration = 0)
 {
     global $config;
     return !setMultiple(array(
-//        [$config['blue'], $turnOn, $duration],
+        [$config['blue'], $turnOn, $duration],
         [$config['yellow'], $turnOn, $duration],
         [$config['green'], $turnOn, $duration]
     ));
@@ -49,7 +49,7 @@ function secondSet($turnOn = 0, $duration = 0)
 {
     global $config;
     return !setMultiple(array(
-//        [$config['blue'], $turnOn, $duration],
+        [$config['blue'], $turnOn, $duration],
         [$config['red'], $turnOn, $duration],
         [$config['green'], $turnOn, $duration]
     ));
