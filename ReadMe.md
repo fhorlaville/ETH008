@@ -1,4 +1,6 @@
 This is my PHP library for controlling a Robot Electronics ETH008 unit.
+http://www.robot-electronics.co.uk/htm/eth008tech.htm
+
 This unit has eight programmable relays and an Ethernet connector.
 
 Here are the files:
